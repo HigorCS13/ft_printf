@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprinft.a
+NAME = libftprintf.a
 
 CC = cc
 
@@ -18,21 +18,21 @@ RM = rm -rf
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = 
+SRCS = ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 
-BONUS = 
+# BONUS = 
 
-BONUS_OBJS = $(BONUS:.c=.o)
+# BONUS_OBJS = $(BONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 		ar rc $(NAME) $(OBJS)
 
-bonus: $(OBJS) $(BONUS_OBJS)
-		ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+# bonus: $(OBJS) $(BONUS_OBJS)
+# 		ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 clean:
 		$(RM) $(BONUS_OBJS) $(OBJS)

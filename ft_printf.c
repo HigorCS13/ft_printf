@@ -40,7 +40,7 @@ static void	ft_put_digt(unsigned long n, t_data *st, int spec)
 		st->base_ref = 10;
 	if (n >= st->base_ref)
 		ft_put_digt(n / st->base_ref, st, spec);
-	ft_put_digt(hex[n % st->base_ref], st, spec);
+	ft_put_char(hex[n % st->base_ref], st);
 }
 
 static void	ft_put_spec(char spec, va_list ap, t_data *st)
@@ -60,16 +60,15 @@ static void	ft_put_spec(char spec, va_list ap, t_data *st)
 		ft_put_digt(st->temp, st, 'u');
 	}
 	else if (spec == 'u' || spec == 'x' || spec == 'X' || spec == 'o' 
-			|| spec == 'b')
+		|| spec == 'b')
 		ft_put_digt((va_arg(ap, unsigned int)), st, spec);
 	else if (spec == 'p')
 	{
 		st->temp = va_arg(ap, long);
 		if (st->temp == 0)
-			ft_put_str("(nil)", st);
-		else
-			ft_put_str("0x", st);
-			ft_put_digt(st->temp, st, 'x');
+			return (ft_put_str("(nil)", st));
+		ft_put_str("0x", st);
+		ft_put_digt(st->temp, st, 'x');
 	}
 }
 
@@ -98,16 +97,14 @@ int	ft_printf(const char *spec, ...)
 	return (st.count);
 }
 
+/*#include <stdio.h>
+
 int	main()
 {
-	ft_printf("%% - porcentagem %c\n", 60);
-	ft_printf("%% - porcentagem %s\n", 60);
-	ft_printf("%% - porcentagem %d\n", 60);
-	ft_printf("%% - porcentagem %i\n", 60);
-	ft_printf("%% - porcentagem %x\n", 60);
-	ft_printf("%% - porcentagem %b\n", 60);
-	ft_printf("%% - porcentagem %o\n", 60);
-	ft_printf("%% - porcentagem %u\n", 60);
-	ft_printf("%% - porcentagem %X\n", 60);
+
+	ft_printf(" NULL %s NULL ", NULL);
+	// printf(" NULL %s NULL ", NULL);
+
 	return (0);
 }
+*/
