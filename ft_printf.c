@@ -59,7 +59,7 @@ static void	ft_put_spec(char spec, va_list ap, t_data *st)
 		}
 		ft_put_digt(st->temp, st, 'u');
 	}
-	else if (spec == 'u' || spec == 'x' || spec == 'X' || spec == 'o' 
+	else if (spec == 'u' || spec == 'x' || spec == 'X' || spec == 'o'
 		|| spec == 'b')
 		ft_put_digt((va_arg(ap, unsigned int)), st, spec);
 	else if (spec == 'p')
